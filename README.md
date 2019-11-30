@@ -12,4 +12,3 @@ Go to localhost:3000
 
 #### To Build
 `yarn install && yarn run build`# Colorku-React
-# Colorku-React-Game
