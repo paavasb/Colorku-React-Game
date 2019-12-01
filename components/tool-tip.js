@@ -6,8 +6,7 @@ import HelpIcon from '../svg/help.svg';
 const TipCopy = (
   <div className="tip-copy">
     <div className="tip-line"><b>Select:</b> Click a cell</div>
-    <div className="tip-line"><b>Assign Number:</b> Single click on desired number control</div>
-    <div><b>Tag Number as Note:</b> Double click on the desired number control</div>
+    <div className="tip-line"><b>Assign Color:</b> Single click on desired color button</div>
     { /* language=CSS */ }
     <style jsx>{`
         .tip-copy {

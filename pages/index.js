@@ -49,18 +49,20 @@ const CellStyle = css`
     // border-radius: 50%;
     //border-color: black;
     border-color: white;
+    //background
 }
 .cell:nth-child(3n+3):not(:last-child) {
-    border-right: 2px solid black;
+    border-right: 5px solid black;
 }
-.cell:not(:last-child) {
+.cell {
     border-right: 1px solid black;
 }
 .note-number {
     border-radius: 50%;
+    //margin-bottom: 0.5em;
     // font-size: .6em;
-    // width: 33%;
-    // height: 33%;
+    width: 33%;
+    height: 33%;
     // box-sizing: border-box;
     // display: flex;
     // align-items: center;
@@ -135,11 +137,12 @@ const NumberControlStyle = css`
 { /* language=CSS */ }
 const PuzzleStyle = css`
 .puzzle {
-    margin-top: .5em;
+    border: 5px solid;
+    margin: 1em;
     width: ${cellWidth * 9}em;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    //background-image: url("sand.jpeg") !important; 
+    background-image: url("../wood.jpg") !important; 
 }
 .row {
     display: flex;
@@ -147,11 +150,14 @@ const PuzzleStyle = css`
     flex: 0;
     width: ${cellWidth * 9}em;
 }
-.row:not(:last-child) {
+.row {
     border-bottom: 1px solid black;
 }
 .row:nth-child(3n+3):not(:last-child) {
-    border-bottom: 2px solid black !important;
+    border-bottom: 5px solid black !important;
+}
+.col:nth-child(3n+3) {
+  border-bottom: 5px solid black !important;
 }
 `;
 
@@ -188,7 +194,7 @@ function getBackGroundColor({
   conflict, isPeer, sameValue, isSelected,
 }) {
   if (conflict && isPeer && sameValue) {
-    return "black";
+    return LightBlue300;
   } else if (sameValue) {
     return LightBlue300;
   } else if (isSelected) {
@@ -234,14 +240,16 @@ class GenerationUI extends Component {
   render() {
     return (
       <div className="generation">
-        <div className="copy">Start with {this.state.value} balls in your Colorku</div>
-        <div className="copy">This game will be {hardness(this.state.value)}!</div>
+        <div className="copy">Select a difficulty level with the slider!</div>
         <InputRange
-          maxValue={81}
+          maxValue={80}
           minValue={17}
+          formatLabel={value => `${hardness(value)}`}
+          step={10}
           value={this.state.value}
           onChange={value => this.setState({ value })}
         />
+        <div className="copy">This game will be {hardness(this.state.value)}!</div>
         <div className="button" onClick={this.generateGame}>Play Colorku</div>
         { /* language=CSS */ }
         <style jsx>{`
@@ -255,7 +263,9 @@ class GenerationUI extends Component {
                 justify-content: center;
                 flex-direction: column;
                 width: 100%;
+                height: 100%;
                 align-items: center;
+                background-color: white;
             }
             :global(.input-range) {
                 width: 80%;
@@ -353,7 +363,7 @@ const Cell = (props) => {
   });
   const fontColor = getFontColor({ conflict, prefilled, value });
   return (
-    <div className={`cell`} onClick={onClick} style = {{backgroundImage: `url("sand.jpeg")`}}>
+    <div className={`cell`} onClick={onClick} style = {{backgroundImage: `url("wood.jpg")`}}>
       {
         // notes ?
         //   range(9).map(i =>
@@ -365,12 +375,13 @@ const Cell = (props) => {
         //     )) :
         //   value && numToColor(value)
       }
-      <div style = {{backgroundColor: numToColor(value, conflict, sameValue, isSelected), height: "100%", width: "100%"}} className = "note-number"></div>
+      <div style = {{backgroundColor: numToColor(value, conflict, sameValue, isSelected), height: "65%", width: "75%"}} className = "note-number"></div>
       {/* language=CSS */}
       <style jsx>{CellStyle}</style>
       <style jsx>{`
                 .cell {
-                    background-color: ${backgroundColor || "#dbd1b4"};
+                    background-image: url("wood.jpg") !important;
+                    background-color: ${backgroundColor || "#E1C9B1"};
                     color: ${fontColor || 'initial'};
                 }
             `}
@@ -726,6 +737,7 @@ export default class Index extends Component {
     );
   }
 
+  // Useful
   renderActions() {
     const { history } = this.state;
     const selectedCell = this.getSelectedCell();
@@ -797,11 +809,12 @@ export default class Index extends Component {
     );
   }
 
+  // Useful
   renderHeader() {
     return (
       <div className="header">
         <div className="new-game" onClick={() => this.setState({ board: false })}>
-          <ReturnIcon />
+          {/* <ReturnIcon /> */}
           <div>New Game</div>
         </div>
         <Tip />
@@ -833,6 +846,8 @@ export default class Index extends Component {
     );
   }
 
+
+// Useful
   render() {
     const { board } = this.state;
     return (
@@ -859,7 +874,7 @@ export default class Index extends Component {
         { /* language=CSS */ }
         <style jsx>{`
             :global(body), .body {
-                font-family: 'Special Elite', cursive;
+                font-family: 'Hiragino Sans';
             }
             .body {
                 display: flex;
