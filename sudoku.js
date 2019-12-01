@@ -6,19 +6,23 @@ export function range(n) {
   return Array.from(Array(n).keys());
 }
 
-function numToColor(number) {
+function numToColor(number, conflict, sameValue, isSelected) {
+  // if (conflict && sameValue) {
+  //   return "black";
+  // } else {
   switch (number) {
-    case 1: return "voilet";
-    case 2: return "indigo";
-    case 3: return "blue";
-    case 4: return "green";
-    case 5: return "yellow";
-    case 6: return "orange";
-    case 7: return "red";
-    case 8: return "aqua";
-    case 9: return "maroon";
-    default: return "#dbd1b4";
-  }
+    case 1: return '#DE1414';
+    case 2: return '#F9851E';
+    case 3: return '#FBE520';
+    case 4: return '#32E780';     
+    case 5: return '#1E792A';
+    case 6: return '#75BDEF';
+    case 7: return '#114CB0';
+    case 8: return '#D691EE';
+    case 9: return '#601B92';
+    default: return '';
+    }
+//}
 }
 
 // Useful

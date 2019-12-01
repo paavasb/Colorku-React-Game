@@ -241,7 +241,7 @@ class GenerationUI extends Component {
           value={this.state.value}
           onChange={value => this.setState({ value })}
         />
-        <div className="button" onClick={this.generateGame}>Play Coloroku</div>
+        <div className="button" onClick={this.generateGame}>Play Colorku</div>
         { /* language=CSS */ }
         <style jsx>{`
             .copy {
@@ -328,17 +328,17 @@ function numToColor(number, conflict, sameValue, isSelected) {
   // if (conflict && sameValue) {
   //   return "black";
   // } else {
-    switch (number) {
-      case 1: return "#ff0000";
-      case 2: return "#ffa500";
-      case 3: return "#ffff00";
-      case 4: return "#64e764";
-      case 5: return "#024b30";
-      case 6: return "#add8e6";
-      case 7: return "#0000a5";
-      case 8: return "#bcbcf2";
-      case 9: return "#800080";
-      default: return "";
+  switch (number) {
+    case 1: return '#DE1414';
+    case 2: return '#F9851E';
+    case 3: return '#FBE520';
+    case 4: return '#32E780';     
+    case 5: return '#1E792A';
+    case 6: return '#75BDEF';
+    case 7: return '#114CB0';
+    case 8: return '#D691EE';
+    case 9: return '#601B92';
+    default: return '';
     }
 //}
 }
