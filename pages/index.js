@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { Component } from 'react';
 import { Set, List, fromJS } from 'immutable';
