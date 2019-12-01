@@ -21,7 +21,7 @@ import Tip from '../components/tool-tip';
 import { height } from 'window-size';
 
 
-const Description = 'Discover the next evolution of Sudoku with amazing graphics, animations, and user-friendly features. Enjoy a Sudoku experience like you never have before with customizable game generation, cell highlighting, intuitive controls and more!';
+const Description = 'Play Colorku - the color sudoku game!';
 const cellWidth = 2.5;
 
 const LightBlue100 = '#B3E5FC';
@@ -207,6 +207,17 @@ function getFontColor({ value, conflict, prefilled }) {
   return false;
 }
 
+function hardness(value) {
+    if(value <= 30) {
+      return "Hard";
+    }
+    if(value <= 60) {
+      return "Medium";
+    } 
+    return "Easy";
+  }    
+  
+
 class GenerationUI extends Component {
   constructor(props) {
     super(props);
@@ -218,10 +229,12 @@ class GenerationUI extends Component {
     this.props.generateGame(this.state.value);
   }
 
+ 
   render() {
     return (
       <div className="generation">
-        <div className="copy">Start with {this.state.value} cells prefilled</div>
+        <div className="copy">Start with {this.state.value} balls in your Colorku</div>
+        <div className="copy">This game will be {hardness(this.state.value)}!</div>
         <InputRange
           maxValue={81}
           minValue={17}
@@ -824,15 +837,15 @@ export default class Index extends Component {
     return (
       <div className="body">
         <NextHead>
-          <title>Sudoku Evolved</title>
+          <title>Colorku</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="description" content={Description} />
           <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" />
-          <meta property="og:url" content="https://sudoku.sitianliu.com/" />
-          <meta property="og:title" content="Sudoku Evolved" />
+          <meta property="og:url" content="https://github.com/paavasb/Colorku-React-Game" />
+          <meta property="og:title" content="Colorku" />
           <meta property="og:type" content="website" />
           <meta property="og:description" content={Description} />
-          <meta property="og:image" content="https://sudoku.sitianliu.com/static/og-image.png" />
+          {/* <meta property="og:image" content="https://sudoku.sitianliu.com/static/og-image.png" /> */}
         </NextHead>
         {!board && this.renderGenerationUI()}
         {board && this.renderHeader()}
