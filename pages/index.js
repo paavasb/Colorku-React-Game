@@ -79,8 +79,9 @@ const ActionsStyle = css`
     justify-content: space-between;
     width: 100%;
     max-width: 400px;
-    margin-top: .5em;
+    margin-top: 2em;
     padding: 0 .6em;
+    cursor: pointer;
 }
 .action {
     display: flex;
@@ -171,6 +172,7 @@ const CirculuarProgressStyle = css`
     top: 0;
     left: 0;
     transition: filter .4s ease-in-out;
+    fill: black;
 }
 
 .circle-bg {
@@ -745,20 +747,24 @@ export default class Index extends Component {
     return (
       <div className="actions">
         <div className="action" onClick={history.size ? this.undo : null}>
-          <ReloadIcon />Undo
-        </div>
-        <div className="action redo" onClick={history.size ? this.redo : null}>
-          <ReloadIcon />Redo
-        </div>
-        <div className="action" onClick={!prefilled ? this.eraseSelected : null}>
-          <RemoveIcon />Erase
+          {/* <ReloadIcon />Undo */}
+          Undo
         </div>
         <div
           className="action"
           onClick={!prefilled ?
           this.fillSelectedWithSolution : null}
         >
-          <LoupeIcon />Hint
+          {/* <LoupeIcon />Hint */}
+          Hint
+        </div>     
+        <div className="action" onClick={!prefilled ? this.eraseSelected : null}>
+          {/* <RemoveIcon />Erase */}
+          Erase
+        </div>
+        <div className="action redo" onClick={history.size ? this.redo : null}>
+          {/* <ReloadIcon />Redo */}
+          Reset
         </div>
         <style jsx>{ActionsStyle}</style>
       </div>
@@ -813,11 +819,19 @@ export default class Index extends Component {
   renderHeader() {
     return (
       <div className="header">
+        <div className="new-game" onClick={this.generateGame}>
+          {/* <ReturnIcon /> */}
+          <div>Menu</div>
+        </div>
+        {/* <Tip className="new-game">
+          <div>Help</div></Tip> */}
+        <h1 className="game-name">
+          <div>Colorku</div>
+        </h1>
         <div className="new-game" onClick={() => this.setState({ board: false })}>
           {/* <ReturnIcon /> */}
-          <div>New Game</div>
+          <div>New</div>
         </div>
-        <Tip />
         { /* language=CSS */ }
         <style jsx>{`
             .header {
@@ -839,6 +853,14 @@ export default class Index extends Component {
             .new-game :global(svg) {
                 height: 1em;
                 margin-bottom: .3em;
+            }
+            .game-name {
+              font: HiraMaruProN;
+              padding-left: 40px; 
+              color: #00008b;
+              cursor: pointer;
+              justify-content: center;
+              align-items: center;
             }
         `}
         </style>

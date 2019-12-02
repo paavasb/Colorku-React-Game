@@ -32,16 +32,19 @@ const Style = css`
     transform: none; }
 
 .input-range__slider-container {
-  transition: left 0.3s ease-out; }
+  transition: left 0.3s ease-out;
+ }
 
 .input-range__label {
   color: #aaaaaa;
   font-size: 0.8rem;
+  
   transform: translateZ(0);
   white-space: nowrap; }
 
 .input-range__label--min,
 .input-range__label--max {
+  transform: scaleX(-1);
   bottom: -1.4rem;
   position: absolute; }
 
@@ -52,17 +55,19 @@ const Style = css`
   right: 0; }
 
 .input-range__label--value {
+  transform: scaleX(-1);
   position: absolute;
   top: -1.8rem; }
 
 .input-range__label-container {
+  // transform: scaleX(-1);
   left: -50%;
   position: relative; }
   .input-range__label--max .input-range__label-container {
     left: 50%; }
 
 .input-range__track {
-  background: #eeeeee;
+  background: #3f51b5;
   border-radius: 0.3rem;
   cursor: pointer;
   display: block;
@@ -70,7 +75,7 @@ const Style = css`
   position: relative;
   transition: left 0.3s ease-out, width 0.3s ease-out; }
   .input-range--disabled .input-range__track {
-    background: #eeeeee; }
+    background: #3f51b5; }
 
 .input-range__track--background {
   left: 0;
@@ -80,9 +85,10 @@ const Style = css`
   top: 50%; }
 
 .input-range__track--active {
-  background: #3f51b5; }
+  background: #eeeeee; }
 
 .input-range {
+  transform: scaleX(-1);
   height: 1rem;
   position: relative;
   margin-top: 1.2em;

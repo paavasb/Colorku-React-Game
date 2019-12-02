@@ -55,6 +55,7 @@ export default class Tip extends Component {
                 :global(.icon) {
                     height: 1.25em;
                     cursor: pointer;
+                    align: center;
                 }
             `}
             </style>
