@@ -857,6 +857,7 @@ export default class Index extends Component {
             .game-name {
               font: HiraMaruProN;
               padding-left: 40px; 
+              padding-right: 40px;
               color: #00008b;
               cursor: pointer;
               justify-content: center;
@@ -883,7 +884,6 @@ export default class Index extends Component {
           <meta property="og:title" content="Colorku" />
           <meta property="og:type" content="website" />
           <meta property="og:description" content={Description} />
-          {/* <meta property="og:image" content="https://sudoku.sitianliu.com/static/og-image.png" /> */}
         </NextHead>
         {!board && this.renderGenerationUI()}
         {board && this.renderHeader()}
@@ -891,7 +891,6 @@ export default class Index extends Component {
         {board && this.renderControls()}
         <div className="rooter">
           {/* Useful  */}
-         {/* Made with <span>❤️</span>️ By <a href="https://www.sitianliu.com/">Paavas Bhasin</a> | <a href="https://medium.com/@sitianliu_57680/building-a-sudoku-game-in-react-ca663915712">Blog Post</a> */}
         </div>
         { /* language=CSS */ }
         <style jsx>{`
